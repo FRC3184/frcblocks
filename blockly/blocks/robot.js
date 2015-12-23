@@ -9,7 +9,7 @@ Blockly.Blocks['robot_motor'] = {
         .appendField("#");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a speed controller object using the PWM number or device number (for CAN)');
   }
 };
 Blockly.Blocks['robot_motor_set'] = {
@@ -23,7 +23,7 @@ Blockly.Blocks['robot_motor_set'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Set a speed controller value between -1 and 1 inclusive.');
   }
 };
 Blockly.Blocks['robot_drive2'] = {
@@ -40,7 +40,7 @@ Blockly.Blocks['robot_drive2'] = {
         .appendField("Right Motor");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a two-controller drive train object. Provide two motor controller objects.');
   }
 };
 Blockly.Blocks['robot_drive4'] = {
@@ -65,7 +65,7 @@ Blockly.Blocks['robot_drive4'] = {
         .appendField("Back Right Motor");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a 4-controller drive train object. Provide four motor controller objects.');
   }
 };
 Blockly.Blocks['robot_joystick'] = {
@@ -75,7 +75,7 @@ Blockly.Blocks['robot_joystick'] = {
         .appendField("Joystick");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a joystick object using the device number.');
   }
 };
 Blockly.Blocks['robot_joystick_button'] = {
@@ -90,7 +90,7 @@ Blockly.Blocks['robot_joystick_button'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Check if a joystick button is pressed');
   }
 };
 Blockly.Blocks['robot_joystick_axis'] = {
@@ -103,7 +103,7 @@ Blockly.Blocks['robot_joystick_axis'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Get the value of a named joystick axis');
   }
 };
 Blockly.Blocks['robot_joystick_axis_raw'] = {
@@ -116,7 +116,7 @@ Blockly.Blocks['robot_joystick_axis_raw'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Get the value of a numbered joystick axis');
   }
 };
 Blockly.Blocks['robot_drive_arcade'] = {
@@ -133,7 +133,7 @@ Blockly.Blocks['robot_drive_arcade'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Drive a robot using arcade drive (forward/rotate)');
   }
 };
 Blockly.Blocks['robot_drive_tank'] = {
@@ -150,7 +150,7 @@ Blockly.Blocks['robot_drive_tank'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Drive a robot using tank drive.');
   }
 };
 Blockly.Blocks['robot_drive_mecanum'] = {
@@ -173,7 +173,7 @@ Blockly.Blocks['robot_drive_mecanum'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Drive a robot with a mecanum drive. Provide the robot drive object, forward, rotate, and strafe values. If not using field-centric driving, gyro can be 0');
   }
 };
 Blockly.Blocks['robot_gyro'] = {
@@ -183,7 +183,7 @@ Blockly.Blocks['robot_gyro'] = {
         .appendField("Gyro");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a gyro object using an analog input channel number');
   }
 };
 Blockly.Blocks['robot_encoder'] = {
@@ -201,7 +201,7 @@ Blockly.Blocks['robot_encoder'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create an encoder. Channels A and B are the digital input channel numbers.');
   }
 };
 Blockly.Blocks['robot_encoder_get'] = {
@@ -213,7 +213,7 @@ Blockly.Blocks['robot_encoder_get'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Get rate or distance from the provided encoder');
   }
 };
 Blockly.Blocks['robot_gyro_get'] = {
@@ -225,7 +225,7 @@ Blockly.Blocks['robot_gyro_get'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Get rate or angle from the provided gyro');
   }
 };
 Blockly.Blocks['robot_sensor_reset'] = {
@@ -235,7 +235,7 @@ Blockly.Blocks['robot_sensor_reset'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Resets an encoder or gyro to 0 accumulation');
   }
 };
 Blockly.Blocks['robot_accel_builtin'] = {
@@ -244,7 +244,7 @@ Blockly.Blocks['robot_accel_builtin'] = {
         .appendField("RoboRIO Accelerometer");
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Create a BuiltinAccelerometer object');
   }
 };
 Blockly.Blocks['robot_accel_builtin_get'] = {
@@ -257,6 +257,6 @@ Blockly.Blocks['robot_accel_builtin_get'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setColour(hue);
-    this.setTooltip('');
+    this.setTooltip('Get one of the directions from the 3-axis RoboRIO accelerometer');
   }
 };
