@@ -1,4 +1,4 @@
-var hue = 60;
+var hue = 60; //hue hue
 
 Blockly.Blocks['robot_motor'] = {
   init: function() {
@@ -31,12 +31,8 @@ Blockly.Blocks['robot_drive2'] = {
     this.appendDummyInput()
         .appendField("Robot Drive");
     this.appendValueInput("MOTOR_LEFT")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "L_REVERSED")
         .appendField("Left Motor");
     this.appendValueInput("MOTOR_RIGHT")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "R_REVERSED")
         .appendField("Right Motor");
     this.setOutput(true);
     this.setColour(hue);
@@ -48,20 +44,12 @@ Blockly.Blocks['robot_drive4'] = {
     this.appendDummyInput()
         .appendField("Robot Drive");
     this.appendValueInput("MOTOR_LEFT1")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "L1_REVERSED")
         .appendField("Front Left Motor");
     this.appendValueInput("MOTOR_RIGHT1")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "R1_REVERSED")
         .appendField("Front Right Motor");
     this.appendValueInput("MOTOR_LEFT2")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "L2_REVERSED")
         .appendField("Back Left Motor");
     this.appendValueInput("MOTOR_RIGHT2")
-        .appendField("Reverse")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "R2_REVERSED")
         .appendField("Back Right Motor");
     this.setOutput(true);
     this.setColour(hue);
@@ -258,5 +246,20 @@ Blockly.Blocks['robot_accel_builtin_get'] = {
     this.setOutput(true);
     this.setColour(hue);
     this.setTooltip('Get one of the directions from the 3-axis RoboRIO accelerometer');
+  }
+};
+Blockly.Blocks['robot_invert_drive_motor'] = {
+  init: function() {
+    this.appendValueInput("DRIVE")
+        .appendField("Robot Drive");
+    this.appendDummyInput()
+        .appendField("invert ")
+        .appendField(new Blockly.FieldDropdown([["front left", "RobotDrive.MotorType.kFrontLeft"], ["front right", "RobotDrive.MotorType.kFrontRight"], ["rear left", "RobotDrive.MotorType.kRearLeft"], ["rear right", "RobotDrive.MotorType.kRearRight"]]), "MOTOR")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "IS_INVERTED");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(hue);
+    this.setTooltip('Invert a drive motor');
   }
 };

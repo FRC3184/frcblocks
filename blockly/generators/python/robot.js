@@ -33,24 +33,17 @@ Blockly.Python['robot_motor_set'] = function(block) {
   return code + "\n";
 };
 Blockly.Python['robot_drive2'] = function(block) {
-  var checkbox_l_reversed = block.getFieldValue('L_REVERSED') == 'TRUE';
   var value_motor_left = Blockly.Python.valueToCode(block, 'MOTOR_LEFT', Blockly.Python.ORDER_ATOMIC);
-  var checkbox_r_reversed = block.getFieldValue('R_REVERSED') == 'TRUE';
   var value_motor_right = Blockly.Python.valueToCode(block, 'MOTOR_RIGHT', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Reversals (Not in drive constructor?)
   // TODO: Assemble Python into code variable.
   var code = 'wpilib.RobotDrive(' + value_motor_left + ", " + value_motor_right + ")";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
 Blockly.Python['robot_drive4'] = function(block) {
-  var checkbox_l1_reversed = block.getFieldValue('L1_REVERSED') == 'TRUE';
   var value_motor_left1 = Blockly.Python.valueToCode(block, 'MOTOR_LEFT1', Blockly.Python.ORDER_ATOMIC);
-  var checkbox_r1_reversed = block.getFieldValue('R1_REVERSED') == 'TRUE';
   var value_motor_right1 = Blockly.Python.valueToCode(block, 'MOTOR_RIGHT1', Blockly.Python.ORDER_ATOMIC);
-  var checkbox_l2_reversed = block.getFieldValue('L2_REVERSED') == 'TRUE';
   var value_motor_left2 = Blockly.Python.valueToCode(block, 'MOTOR_LEFT2', Blockly.Python.ORDER_ATOMIC);
-  var checkbox_r2_reversed = block.getFieldValue('R2_REVERSED') == 'TRUE';
   var value_motor_right2 = Blockly.Python.valueToCode(block, 'MOTOR_RIGHT2', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
   var code = 'wpilib.RobotDrive(' + value_motor_left1 + ", " + value_motor_left2 + ", " + value_motor_right1 + ", " + value_motor_right2 + ")";
@@ -139,7 +132,7 @@ Blockly.Python['robot_encoder'] = function(block) {
   var value_channel_b = Blockly.Python.valueToCode(block, 'CHANNEL_B', Blockly.Python.ORDER_ATOMIC);
   var checkbox_reverse = block.getFieldValue('REVERSE') == 'TRUE';
   // TODO: Assemble Python into code variable.
-  var code = 'wpilib.Encoder(' + value_channel_a + ", " + value_channel_b + ", " + checkbox_reverse + ", wpilib.Encoder.EncodingType." + dropdown_type + ")";
+  var code = 'wpilib.Encoder(' + value_channel_a + ", " + value_channel_b + ", " + (checkbox_reverse ? "True" : "False") + ", wpilib.Encoder.EncodingType." + dropdown_type + "";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -172,4 +165,12 @@ Blockly.Python['robot_accel_builtin_get'] = function(block) {
   var code = value_accel + "." + dropdown_dir;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
+};
+Blockly.Python['robot_invert_drive_motor'] = function(block) {
+  var value_drive = Blockly.Python.valueToCode(block, 'DRIVE', Blockly.Python.ORDER_ATOMIC);
+  var dropdown_motor = block.getFieldValue('MOTOR');
+  var checkbox_is_inverted = block.getFieldValue('IS_INVERTED') == 'TRUE';
+  // TODO: Assemble Python into code variable.
+  var code = value_drive + ".setInvertedMotor(wpilib." + dropdown_motor + ", " + (checkbox_is_inverted ? "True" : "False") + ")\n";
+  return code;
 };

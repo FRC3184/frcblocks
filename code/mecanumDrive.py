@@ -4,13 +4,15 @@ stick = None
 strafe = None
 drive = None
 move = None
-gyro = None
 turn = None
+gyro = None
 
 def robotInit():
   global stick, drive, gyro
   stick = wpilib.Joystick(1)
-  drive = wpilib.RobotDrive((wpilib.CANTalon(0)), (wpilib.CANTalon(1)))
+  drive = wpilib.RobotDrive((wpilib.CANTalon(0)), (wpilib.CANTalon(2)), (wpilib.CANTalon(1)), (wpilib.CANTalon(3)))
+  drive.setInvertedMotor(wpilib.RobotDrive.MotorType.kFrontLeft, True)
+  drive.setInvertedMotor(wpilib.RobotDrive.MotorType.kRearLeft, True)
   gyro = wpilib.Gyro(0)
 
 def teleopPeriodic():

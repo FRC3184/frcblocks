@@ -68,6 +68,7 @@ toolbox = """
         <block type="robot_motor_set"></block>
         <block type="robot_drive2"></block>
         <block type="robot_drive4"></block>
+        <block type="robot_invert_drive_motor"></block>
         <block type="robot_drive_arcade"></block>
         <block type="robot_drive_tank"></block>
         <block type="robot_drive_mecanum"></block>
