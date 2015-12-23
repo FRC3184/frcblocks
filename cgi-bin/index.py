@@ -4,7 +4,7 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 toolbox = """
-<xml id="toolbox" style="display: none">
+<xml id="toolbox">
     <category name="Variables" custom="VARIABLE" colour="330"></category>
     <category name="Functions" custom="PROCEDURE" colour="290"></category>
     <category name="Lists" colour="260">
@@ -113,63 +113,7 @@ scripts = """
 <script src="../blockly/generators/python/procedures.js"></script>
 <script src="../blockly/generators/python/variables.js"></script>
 
-<script>
-    var genCode = function(workspace) {
-        return "import wpilib\\n\\n" + Blockly.Python.workspaceToCode(workspace);
-    };
-    var workspace = Blockly.inject('blocklyDiv',
-        {toolbox: document.getElementById('toolbox')});
-        
-    var saved = document.getElementById("saved");
-    if (saved != undefined) {
-        Blockly.Xml.domToWorkspace(workspace, saved);
-    }
-    var codeWindow = document.getElementById("codeWindow");
-    
-    workspace.addChangeListener(function() {
-        codeWindow.innerHTML = genCode(workspace).replace(/ /g, '&nbsp;').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/(\\n)/g, '<br />').replace(/\\\\/g, "&bsol;");
-    });
-    var save = document.getElementById("save");
-    save.onclick = function() {
-        var name = document.getElementById("progname");
-        var dom = Blockly.Xml.workspaceToDom(workspace).innerHTML;
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'save.py', true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                console.log(xhr.responseText);
-            }
-        }
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("name=" + name.value + "&save=" + dom);
-    };
-    
-    var send = function(opt) {
-        var name = document.getElementById("progname");
-        var code = genCode(workspace);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'compile.py', true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                console.log(xhr.responseText);
-            }
-        }
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("name=" + name.value + "&opt=" + opt + "&code=" + code);
-    };
-    var compile = document.getElementById("compile");
-    compile.onclick = function() {
-        send("compile");
-    };
-    var deploy = document.getElementById("deploy");
-    deploy.onclick = function() {
-        send("deploy");
-    };
-    var sim = document.getElementById("sim");
-    sim.onclick = function() {
-        send("sim");
-    };
-</script>
+<script src="../js/main.js"></script>
 """
 
 print("Content-Type: text/html")    # HTML is following
@@ -181,19 +125,21 @@ if 'load' in form:
     load.close()
 print("""
 <!DOCTYPE html>
-<html style="height:100%">
+<html>
 <head>
 <title>FRC Blocks</title>
+<link rel="stylesheet" href="../css/main.css" type="text/css" />
 </head>
-<body style="height:100%">
+<body>
 """ + toolbox)
 if saved is not None:
-    print("<xml id=\"saved\" style=\"display:none\">" + saved + "</xml>")
-print("<div id=\"blocklyDiv\" style=\"height: 75%; width: 60%; float:left;\"></div><code id=\"codeWindow\" style=\"height: 75%; width: 40%; float:right; overflow:auto;\"></code>")
-print("""<input id="progname" type="text" placeholder="Name" value=\"""" + ((form['load'].value) if 'load' in form else "") + """\"/>
-<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button>
-<br />
-<div style="overflow:auto;height:20%">
+    print("<xml id=\"saved\">" + saved + "</xml>")
+print("<div id=\"blocklyDiv\"></div><code id=\"codeWindow\"></code>")
+print("""<div id="actions"><input id="progname" type="text" placeholder="Name" value=\"""" + ((form['load'].value) if 'load' in form else "") + """\"/>
+<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button></div>
+
+<div id="loadDiv">
+Load File
 <ul id="files">
 """)
 for i in os.listdir("saves"):

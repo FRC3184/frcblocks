@@ -1,0 +1,26 @@
+html, body {
+    height:100%;
+}
+#saved, #toolbox {
+    display:none;
+}
+#blocklyDiv {
+    height:75%;
+    width:60%;
+    float:left;
+}
+#codeWindow {
+    height:75%;
+    width:39%;
+    float:right;
+    overflow:auto;
+    border: 1px solid black;
+    padding:.2em;
+}
+#loadDiv {
+    height:15%;
+    width:20%;
+    overflow:auto;
+    border:1px solid black;
+    padding:.2em;
+}

@@ -2,5 +2,3 @@ todo:
 local variables, if possible
 sensors (gyro, encoder, and builtin accel done)
 pneumatics
-move to script file
-move to css file

@@ -12,7 +12,7 @@ Install Python 3 and pyfrc.
 
 Start the webserver (run.bat). It's just a python http.server with CGI enabled.
 
-Navigate to localhost:8000 using your favorite web browser (not IE).
+Navigate to localhost:8000/cgi-bin/index.py using your favorite web browser (not IE).
 
 Start coding! You will need, at minimum, a robotInit procedure, and a teleopPeriodic procedure. Further methods can be found in the robotpy docs. 
 
