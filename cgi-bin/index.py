@@ -137,7 +137,7 @@ if saved is not None:
     print("<xml id=\"saved\">" + saved + "</xml>")
 print("<div id=\"blocklyDiv\"></div><code id=\"codeWindow\"></code>")
 print("""<div id="actions"><input id="progname" type="text" placeholder="Name" value=\"""" + ((form['load'].value) if 'load' in form else "") + """\"/>
-<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button></div>
+<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button><a href="getting_started.html">Getting Started</a></div>
 
 <div id="loadDiv">
 Load File
