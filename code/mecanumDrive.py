@@ -8,6 +8,7 @@ turn = None
 gyro = None
 highGear = None
 
+
 def robotInit():
   global stick, drive, gyro, highGear
   stick = wpilib.Joystick(1)

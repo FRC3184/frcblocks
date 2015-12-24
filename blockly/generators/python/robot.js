@@ -210,3 +210,20 @@ Blockly.Python['robot_solenoid_get'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
+Blockly.Python['robot_event_begin'] = function(block) {
+  var dropdown_mode = block.getFieldValue('MODE');
+  var statements_code = Blockly.Python.statementToCode(block, 'CODE');
+  
+  var globals = Blockly.Variables.allVariables(block);
+  for (var i = globals.length - 1; i >= 0; i--) {
+    var varName = globals[i];
+    globals[i] = Blockly.Python.variableDB_.getName(varName,
+          Blockly.Variables.NAME_TYPE);
+  }
+  globals = globals.length ? '  global ' + globals.join(', ') + '\n' : '';
+  
+  var code = 'def ' + dropdown_mode + '():\n' + globals + statements_code;
+  
+  return code;
+};
+Blockly.Python['robot_event_periodic'] = Blockly.Python['robot_event_begin'];

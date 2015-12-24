@@ -14,7 +14,7 @@ Coding
 
 2. Navigate to "localhost:8000/cgi-bin/index.py"
 
-3. Create procedures named "robotInit", "autonomousInit", "teleopInit", "autonomousPeriodic", "teleopPeriodic". These are your starting points. Each 'init' method is run once at the beginning of the respective phase, while 'periodic' methods are run at 50hz ideally. There are two more phases, disabled and test.
+3. Use blocks from the "Robot Events" category to begin coding. Each 'init' method is run once at the beginning of the respective phase, while 'periodic' methods are run at 50hz ideally.
 
 4. Create motor controllers, sensors, robot drives, and joysticks using their respective constructor blocks (the ones with just a number input)
 

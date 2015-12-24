@@ -327,3 +327,24 @@ Blockly.Blocks['robot_solenoid_get'] = {
     this.setTooltip('Gets the state of a single or double solenoid. Could be a boolean or a DoubleSolenoid.Value.');
   }
 };
+Blockly.Blocks['robot_event_begin'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("When")
+        .appendField(new Blockly.FieldDropdown([["initialization", "robotInit"], ["teleop", "teleopInit"], ["autonomous", "autonomousInit"], ["test", "testInit"], ["disabled", "disabledInit"]]), "MODE")
+        .appendField("begins");
+    this.appendStatementInput("CODE");
+    this.setColour(hue);
+    this.setTooltip('Starting point for initialization code');
+  }
+};
+Blockly.Blocks['robot_event_periodic'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["Teleop", "teleopPeriodic"], ["Autonomous", "autonomousPeriodic"], ["Test", "testPeriodic"], ["Disabled", "disabledPeriodic"]]), "MODE")
+        .appendField("periodic");
+    this.appendStatementInput("CODE");
+    this.setColour(hue);
+    this.setTooltip('Starting point for periodic code');
+  }
+};

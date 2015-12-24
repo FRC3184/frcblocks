@@ -63,6 +63,10 @@ toolbox = """
         <block type="text_print"></block>
         <block type="text_prompt_ext"></block>
     </category>
+    <category name="Robot Events" colour="60">
+        <block type="robot_event_begin"></block>
+        <block type="robot_event_periodic"></block>
+    </category>
     <category name="Robot Drive" colour="60">
         <block type="robot_motor"></block>
         <block type="robot_motor_set"></block>
