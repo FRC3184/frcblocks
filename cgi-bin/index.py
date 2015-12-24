@@ -83,7 +83,11 @@ toolbox = """
         <block type="robot_accel_builtin_get"></block>
     </category>
     <category name="Pneumatics" colour="60">
-    
+        <block type="robot_solenoid"></block>
+        <block type="robot_solenoid_double"></block>
+        <block type="robot_solenoid_set"></block>
+        <block type="robot_solenoid_double_set"></block>
+        <block type="robot_solenoid_get"></block>
     </category>
     <category name="Controllers" colour="60">
         <block type="robot_joystick"></block>
@@ -137,7 +141,7 @@ if saved is not None:
     print("<xml id=\"saved\">" + saved + "</xml>")
 print("<div id=\"blocklyDiv\"></div><code id=\"codeWindow\"></code>")
 print("""<div id="actions"><input id="progname" type="text" placeholder="Name" value=\"""" + ((form['load'].value) if 'load' in form else "") + """\"/>
-<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button><a href="getting_started.html">Getting Started</a></div>
+<button id="save">Save</button><button id="compile">Compile</button><button id="deploy">Deploy</button><button id="sim">Simulate</button>&nbsp;<a href="getting_started.html">Getting Started</a></div>
 
 <div id="loadDiv">
 Load File

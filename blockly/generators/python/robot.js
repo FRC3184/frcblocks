@@ -174,3 +174,39 @@ Blockly.Python['robot_invert_drive_motor'] = function(block) {
   var code = value_drive + ".setInvertedMotor(wpilib." + dropdown_motor + ", " + (checkbox_is_inverted ? "True" : "False") + ")\n";
   return code;
 };
+Blockly.Python['robot_solenoid'] = function(block) {
+  var value_channel = Blockly.Python.valueToCode(block, 'CHANNEL', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'wpilib.Solenoid(' + value_channel + ")";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+Blockly.Python['robot_solenoid_double'] = function(block) {
+  var value_channel_f = Blockly.Python.valueToCode(block, 'CHANNEL_F', Blockly.Python.ORDER_ATOMIC);
+  var value_channel_r = Blockly.Python.valueToCode(block, 'CHANNEL_R', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = 'wpilib.DoubleSolenoid(' + value_channel_f + ", " + value_channel_r + ")";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+Blockly.Python['robot_solenoid_set'] = function(block) {
+  var value_solenoid = Blockly.Python.valueToCode(block, 'SOLENOID', Blockly.Python.ORDER_ATOMIC);
+  var value_value = Blockly.Python.valueToCode(block, 'VALUE', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = value_solenoid + ".set(" + value_value + ")\n";
+  return code;
+};
+Blockly.Python['robot_solenoid_double_set'] = function(block) {
+  var value_solenoid = Blockly.Python.valueToCode(block, 'SOLENOID', Blockly.Python.ORDER_ATOMIC);
+  var dropdown_value = block.getFieldValue('VALUE');
+  // TODO: Assemble Python into code variable.
+  var code = value_solenoid + ".set(wpilib.DoubleSolenoid.Value." + dropdown_value + ")\n";
+  return code;
+};
+Blockly.Python['robot_solenoid_get'] = function(block) {
+  var value_solenoid = Blockly.Python.valueToCode(block, 'SOLENOID', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = value_solenoid + ".get()";
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};

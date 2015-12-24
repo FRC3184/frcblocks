@@ -263,3 +263,67 @@ Blockly.Blocks['robot_invert_drive_motor'] = {
     this.setTooltip('Invert a drive motor');
   }
 };
+Blockly.Blocks['robot_solenoid'] = {
+  init: function() {
+    this.appendValueInput("CHANNEL")
+        .setCheck("Number")
+        .appendField("Solenoid");
+    this.setOutput(true);
+    this.setColour(hue);
+    this.setTooltip('Create a single solenoid using the channel provided');
+  }
+};
+Blockly.Blocks['robot_solenoid_double'] = {
+  init: function() {
+    this.appendValueInput("CHANNEL_F")
+        .setCheck("Number")
+        .appendField("Double Solenoid Forward Channel");
+    this.appendValueInput("CHANNEL_R")
+        .setCheck("Number")
+        .appendField("Reverse Channel");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setColour(hue);
+    this.setTooltip('Create a double solenoid using the two channels provided');
+  }
+};
+Blockly.Blocks['robot_solenoid_set'] = {
+  init: function() {
+    this.appendValueInput("SOLENOID")
+        .appendField("Solenoid");
+    this.appendValueInput("VALUE")
+        .setCheck("Boolean")
+        .appendField("set");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(hue);
+    this.setTooltip('Sets a single solenoid to on or off (true/false)');
+  }
+};
+Blockly.Blocks['robot_solenoid_double_set'] = {
+  init: function() {
+    this.appendValueInput("SOLENOID")
+        .appendField("Double Solenoid");
+    this.appendDummyInput()
+        .appendField("set ")
+        .appendField(new Blockly.FieldDropdown([["Forward", "kForward"], ["Reverse", "kReverse"], ["Off", "kOff"]]), "VALUE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(hue);
+    this.setTooltip('Set a DoubleSolenoid\'s value');
+  }
+};
+Blockly.Blocks['robot_solenoid_get'] = {
+  init: function() {
+    this.appendValueInput("SOLENOID")
+        .appendField("Solenoid");
+    this.appendDummyInput()
+        .appendField("get state");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setColour(hue);
+    this.setTooltip('Gets the state of a single or double solenoid. Could be a boolean or a DoubleSolenoid.Value.');
+  }
+};
