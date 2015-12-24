@@ -212,7 +212,8 @@ Blockly.Python['robot_solenoid_get'] = function(block) {
 };
 Blockly.Python['robot_event_begin'] = function(block) {
   var dropdown_mode = block.getFieldValue('MODE');
-  var statements_code = Blockly.Python.statementToCode(block, 'CODE');
+  var statements_code = Blockly.Python.statementToCode(block, 'CODE') || Blockly.Python.INDENT + 'pass';
+  
   
   var globals = Blockly.Variables.allVariables(block);
   for (var i = globals.length - 1; i >= 0; i--) {
