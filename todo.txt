@@ -1,4 +1,3 @@
 todo:
 local variables, if possible
 sensors (gyro, encoder, and builtin accel done)
-pneumatics

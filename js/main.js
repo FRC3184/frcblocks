@@ -1,3 +1,21 @@
+//Keep from navigating if the workspace has changed
+var confirmOnPageExit = function (e) 
+{
+    // If we haven't been passed the event get the window.event
+    e = e || window.event;
+
+    var message = 'You have unsaved changes. Would you still like to leave?';
+
+    // For IE6-8 and Firefox prior to version 4
+    if (e) 
+    {
+        e.returnValue = message;
+    }
+
+    // For Chrome, Safari, IE8+ and Opera 12+
+    return message;
+};
+
 
 //add wpilib import to code
 var genCode = function(workspace) {
@@ -11,16 +29,20 @@ var workspace = Blockly.inject('blocklyDiv',
 var saved = document.getElementById("saved");
 if (saved != undefined) {
     Blockly.Xml.domToWorkspace(workspace, saved);
+    window.onbeforeunload = null;
 }
 
 //Format code for HTML and put it in the window
+//Also add confirm navigation function
 var codeWindow = document.getElementById("codeWindow");
 workspace.addChangeListener(function() {
+    window.onbeforeunload = confirmOnPageExit;
     codeWindow.innerHTML = genCode(workspace).replace(/ /g, '&nbsp;').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/(\n)/g, '<br />').replace(/\\/g, "&bsol;");
 });
 
 
 //Save code using the name textbox
+//Also disable navigation confirm
 var save = document.getElementById("save");
 save.onclick = function() {
     var name = document.getElementById("progname");
@@ -28,6 +50,7 @@ save.onclick = function() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", 'save.py', true);
     xhr.onreadystatechange = function() {
+        window.onbeforeunload = null;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log(xhr.responseText);
         }
