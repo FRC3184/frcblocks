@@ -7,7 +7,7 @@ print("Content-Type: text/html")
 print()
 #print(form)
 def run(cmd):
-    subprocess.Popen(shlex.split(cmd + "\nPAUSE"), creationflags=subprocess.CREATE_NEW_CONSOLE)
+    subprocess.Popen(shlex.split(cmd), creationflags=subprocess.CREATE_NEW_CONSOLE)
 
 if 'code' in form and 'name' in form:
     load = open("code/" + form['name'].value + ".py", 'w+')

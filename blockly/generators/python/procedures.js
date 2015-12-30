@@ -64,7 +64,7 @@ Blockly.Python['procedures_defreturn'] = function(block) {
   } else if (!branch) {
     branch = Blockly.Python.PASS;
   }
-  var args = [];
+  var args = ["self"];
   for (var x = 0; x < block.arguments_.length; x++) {
     args[x] = Blockly.Python.variableDB_.getName(block.arguments_[x],
         Blockly.Variables.NAME_TYPE);
@@ -90,7 +90,7 @@ Blockly.Python['procedures_callreturn'] = function(block) {
     args[x] = Blockly.Python.valueToCode(block, 'ARG' + x,
         Blockly.Python.ORDER_NONE) || 'None';
   }
-  var code = funcName + '(' + args.join(', ') + ')';
+  var code = "self." + funcName + '(' + args.join(', ') + ')';
   return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
 
@@ -103,7 +103,7 @@ Blockly.Python['procedures_callnoreturn'] = function(block) {
     args[x] = Blockly.Python.valueToCode(block, 'ARG' + x,
         Blockly.Python.ORDER_NONE) || 'None';
   }
-  var code = funcName + '(' + args.join(', ') + ')\n';
+  var code = "self." + funcName + '(' + args.join(', ') + ')\n';
   return code;
 };
 
