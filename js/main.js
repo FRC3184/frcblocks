@@ -19,7 +19,8 @@ var confirmOnPageExit = function (e)
 
 //add wpilib import to code
 var genCode = function(workspace) {
-    return "import wpilib\n\n" + Blockly.Python.workspaceToCode(workspace);
+return "import wpilib\n\nclass TheRobot(wpilib.IterativeRobot):\n" + Blockly.Python.INDENT + Blockly.Python.workspaceToCode(workspace).replace(/\n/g, "\n" + Blockly.Python.INDENT) +
+"\n\n" + "if __name__ == '__main__':\n" + Blockly.Python.INDENT + "wpilib.run(TheRobot)";
 };
 //create workspace
 var workspace = Blockly.inject('blocklyDiv',

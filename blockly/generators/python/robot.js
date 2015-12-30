@@ -223,7 +223,7 @@ Blockly.Python['robot_event_begin'] = function(block) {
   }
   globals = globals.length ? '  global ' + globals.join(', ') + '\n' : '';
   
-  var code = 'def ' + dropdown_mode + '():\n' + globals + statements_code;
+  var code = 'def ' + dropdown_mode + '(self):\n' + globals + statements_code;
   
   return code;
 };
