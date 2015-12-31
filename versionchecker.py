@@ -23,5 +23,5 @@ if __name__ == '__main__':
                 print("New version available ({}). Download from http://github.com/FRC3184/frcblocks".format(remote))
             else:
                 print("FRC Blocks is up to date")
-    except URLError | HTTPException:
+    except (URLError, HTTPException):
         print("Trouble connecting. You may be offline.")
